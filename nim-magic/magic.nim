@@ -8,8 +8,8 @@ const MAGIC_NONE* = 0x000000
 
 # types
 type
-Magic = object
-MagicPtr* = ptr Magic
+ Magic = object
+ MagicPtr* = ptr Magic
 
 # C function bindings
 proc magic_open(flags: cint): MagicPtr {.importc, dynlib: libName.}
@@ -20,8 +20,8 @@ proc magic_error(cookie: MagicPtr): cstring {.importc, dynlib: libName.}
 
 # API
 proc guessFile*(filepath: string, flags: cint = MAGIC_NONE): string =
-let fullPath = expandFilename(filepath)
-if not (fileExists(fullPath) or dirExists(fullPath)):
+  let fullPath = expandFilename(filepath)
+  if not (fileExists(fullPath) or dirExists(fullPath)):
     return "File does not exist"
 
   let cookie = magic_open(flags)
