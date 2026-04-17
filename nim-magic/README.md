@@ -1,0 +1,1 @@
+nim bindings for libmagic
